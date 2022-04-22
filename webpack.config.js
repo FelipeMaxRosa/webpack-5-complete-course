@@ -1,4 +1,4 @@
-const path = require("path");
+const path = require('path');
 
 // 4 Types of Asset Modules
 // - asset/resource
@@ -7,10 +7,18 @@ const path = require("path");
 // - asset/source
 
 module.exports = {
-	entry: "./src/index.js",
+	entry: './src/index.js',
 	output: {
-		filename: "bundle.js",
-		path: path.resolve(__dirname, "./dist"),
+		filename: 'bundle.js',
+		path: path.resolve(__dirname, './dist'),
 	},
-	mode: "none",
+	mode: 'none',
+	module: {
+		rules: [
+			{
+				test: /\.(png|jpg)$/,
+				type: 'asset/resource',
+			},
+		],
+	},
 };
