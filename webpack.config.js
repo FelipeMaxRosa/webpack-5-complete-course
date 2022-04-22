@@ -1,4 +1,5 @@
 const path = require('path');
+const TerserPlugin = require('terser-webpack-plugin');
 
 // 4 Types of Asset Modules
 // - asset/resource - to large files,
@@ -40,4 +41,5 @@ module.exports = {
 			},
 		],
 	},
+	plugins: [new TerserPlugin()],
 };
