@@ -1,9 +1,10 @@
 const path = require('path');
 
 // 4 Types of Asset Modules
-// - asset/resource
-// - asset/inline
-// - asset
+// - asset/resource - to large files,
+// - asset/inline - to small files, increase the bundle
+// - asset - combination of two above, and use
+//           parser.dataUrlCondition.maxSize
 // - asset/source
 
 module.exports = {
@@ -18,7 +19,16 @@ module.exports = {
 		rules: [
 			{
 				test: /\.(png|jpg)$/,
-				type: 'asset/resource',
+				type: 'asset',
+				parser: {
+					dataUrlCondition: {
+						maxSize: 3 * 1024, // 3 kilobytes
+					},
+				},
+			},
+			{
+				test: /\.txt/,
+				type: 'asset/source',
 			},
 		],
 	},
